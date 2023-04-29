@@ -1,0 +1,117 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The home page of exactofloat.com. A website that helps you find CS:GO skins that when combined in a trade-up contract will result in a skin with a specific float.">
+        <meta name="author" content="Stanley Dam">
+        <title>ExactoFloat</title>
+
+        <link href="./css/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" href="./img/favicon.jpg">
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9J0SKLM5Y2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-9J0SKLM5Y2');
+        </script>
+    </head>
+
+    <header>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+              <a class="navbar-brand d-flex align-items-center">
+                <img src="./img/ExactoKnifeIcon.png" width="50" height="50"></img>
+                <strong>Exacto Float</strong>
+              </a>
+
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link px-3" href="./TradeupFinder.html" style="font-weight: bold; font-size: large; color: #ffffffe3;">Trade up finder</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link px-3" href="./Contact.html" style="font-weight: bold; font-size: large; color: #ffffffe3;">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </header>
+
+    <main>
+        <section class="py-5 text-center" style="
+          position: relative;
+          width: 100%;
+          height: auto;
+          min-height: 35rem;
+          padding: 15rem 0;
+          background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.3)), color-stop(75%, rgba(22, 22, 22, 0.7)), to(#161616)), url(./img/Tradeups.gif);
+          background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(./img/Tradeups.gif);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+          background-size: cover;
+        ">
+          <div class="card container" style="background-color: rgba(255, 255, 255, 0.822);">
+            <div class="card-body">
+              <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                  <h1>Welcome to exacto float!</h1>
+                  <p class="lead py-3" style="color: black;">A website that allows you to find trade up contracts that will result in a skin with a very specific float.</p>
+                  <p>
+                    <a href="./TradeupFinder.html" class="btn btn-primary my-2">Get started</a>
+                    <a href="#about" class="btn btn-secondary my-2">Read more...</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="album bg-light" id="about">
+            <div class="container my-5">
+                <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                  <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                    <h1 class="display-4 fw-bold lh-1">How it works</h1>
+                    <p class="lead">We try to make trading up for skins with specific floats as easy as possible. You only need to let us know what skin you would like and what float value you would like the skin to have. We will try to find a contract that will result in that exact skin, we will also give you the cheapest combination if multiple contracts where found.</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                      <a href="./TradeupFinder.html" type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Start trading up!</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                      <img class="rounded-lg-3" src="./img/TradeupScreen.jpg" alt="" width="720">
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="album py-5 bg-light">
+          <div class="container my-5">
+            <div class="row align-items-center rounded-3 border shadow-lg">
+              <iframe height="600rem" src="https://www.youtube.com/embed/sSicmnuOrAA" frameborder="0" allowfullscreen class="video"></iframe>
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <footer class="text-muted py-5">
+        <div class="container text-center">
+          <a href="https://discord.gg/JmYsqXPzZf" target="_blank" class="mx-2">
+            <i class="fab fa-discord"></i>
+          </a>
+          <a href="https://www.youtube.com/channel/UCLxDOE2vObQ9FRRoXXO5vdA" target="_blank" class="mx-2">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="https://twitter.com/ExactoFloat" target="_blank" class="mx-2">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <p class="mb-0 py-3">Copyright © 2022 Stanley Dam. I am not affiliated with Valve Corp.</p>
+        </div>
+    </footer>
+
+</html>

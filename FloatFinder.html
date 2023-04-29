@@ -1,0 +1,206 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The home page of exactofloat.com. A website that helps you find CS:GO skins that when combined in a trade-up contract will result in a skin with a specific float.">
+        <meta name="author" content="Stanley Dam">
+        <title>ExactoFloat</title>
+
+        <link href="./css/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/SkinTiers.css" rel="stylesheet">
+        <link rel="icon" href="./img/favicon.jpg">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9J0SKLM5Y2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-9J0SKLM5Y2');
+        </script>
+    </head>
+
+    <header>
+      <div class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+          <div class="container">
+            <a href="./index.html" class="navbar-brand d-flex align-items-center">
+              <img src="./img/ExactoKnifeIcon.png" width="50" height="50"></img>
+              <strong>Exacto Float</strong>
+            </a>
+
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link px-3 active" href="./TradeupFinder.html" style="font-weight: bold; font-size: large;">Trade up finder</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-3" href="./Contact.html" style="font-weight: bold; font-size: large; color: #ffffffe3;">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </header>
+
+    <body onload="OnbodyLoad()">
+      <div class="py-5 text-center container">
+        <div class="container d-flex justify-content-center">
+          <div style="width: 512px;" id="skinData">
+          </div>
+        </div>
+
+        <div class="py-5 container d-flex justify-content-center">
+          <div class="form-group">
+            <label for="floatInputField">Enter your desired float value</label>
+            <input type="number" step="0.00001" class="form-control" id="floatInputField" placeholder="Enter your desired float value." aria-describedby="floatInputFieldInfo" onchange="OnFloatChanged()"></input>
+            <small id="floatInputFieldInfo" class="form-text text-muted">We automatically change your desired float to the closest possible float value.</small>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-secondary collapsed" data-toggle="collapse" href="#settings" role="button" aria-expanded="false"data-target="#settings">
+            Extra settings
+          </a>
+        </p>
+
+        <div class="collapse" id="settings">
+
+          <div class="container d-flex justify-content-center">
+            <div class="form-check py-3" id="stattrakDiv">
+              <input class="form-check-input" type="checkbox" value="" id="searchStattrak" onclick="LoadAllCollectionsIntoDropdown()">
+              <label class="form-check-label" for="searchStattrak">
+                StatTrak™
+              </label>
+            </div>
+          </div>
+
+          <div class="container d-flex justify-content-center">
+            <div class="form-check py-2">
+              <input class="form-check-input" type="checkbox" value="" id="useMaxOverpay" onclick="OnUseMaxOverpayChange()">
+              <label class="form-check-label" for="useMaxOverpay">
+                Use maximum overpay per skin
+              </label>
+            </div>
+  
+            <div class="input-group mb-3" style="margin-left: 5rem; max-width: 18rem;">
+              <input type="number" class="form-control" aria-label="max overpay in percent" id="maxOverpayInPercent" disabled>
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="container d-flex justify-content-center">
+            <div class="form-check py-2">
+              Desired chance
+            </div>
+  
+            <div class="input-group mb-3" style="margin-left: 5rem; max-width: 18rem;">
+              <input type="number" class="form-control" aria-label="Desired odds in percent" id="desiredChance" value="100">
+              <div class="input-group-append">
+                <span class="input-group-text">%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="container d-flex justify-content-center">
+              <div class="dropdown">
+                <a class="btn btn-secondary collapsed" data-toggle="collapse" href="#collectionDropdown" role="button" aria-expanded="false"data-target="#collectionDropdown">
+                  Filler collections
+                </a>
+                
+                <div class="collapse py-2" id="collectionDropdown">
+                  <div class="list-group list-group-flush" id="collectionsList">
+
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary my-2 disabled" onclick="FindTradeupContract()" id="FindTradeupButton">
+        <span class="spinner-grow spinner-grow-sm" id="loadingIcon" role="status" aria-hidden="false" hidden></span>
+        Find tradeup contract
+      </button>
+
+      <div class="py-5 text-center container" id="error" hidden>
+        <div class="container d-flex justify-content-center">
+          <div class="card text-white bg-danger" style="min-width: 18rem; max-width: 30rem;">
+            <div class="card-header">Failed!</div>
+            <div class="card-body">
+              <p class="card-text">We could not find a contract that will result a float that is near your desired float, this is most likely due to the float caps or the availability of the skins in the rarity tier below this item.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-5 text-center container" id="outputHolder" hidden>
+        <div class="container d-flex justify-content-center">
+          <div class="card text-white bg-success" style="min-width: 18rem;">
+            <div class="card-header">Resulting float</div>
+            <div class="card-body">
+              <h5 class="card-title" id="resultingFloat">0.25</h5>
+            </div>
+          </div>
+          <div class="card text-white bg-success" style="margin-left:30px; min-width: 18rem;">
+            <div class="card-header">Contract price</div>
+            <div class="card-body">
+              <h5 class="card-title" id="resultPrice">$16</h5>
+            </div>
+          </div>
+          <div class="card text-white bg-success" style="margin-left:30px; min-width: 18rem;">
+            <div class="card-header">Odds</div>
+            <div class="card-body">
+              <h5 class="card-title" id="resultodds">25%</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="py-5 text-center container" id="warning">
+          <div class="container d-flex justify-content-center">
+            <div class="card text-white bg-warning" style="min-width: 18rem; max-width: 30rem;">
+              <strong class="card-header">Be carefull!</strong>
+              <div class="card-body">
+                <strong class="card-text">Always double check the float before you buy the skin!</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container d-flex justify-content-center py-3">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" id="output">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bootstrap core JavaScript-->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+      <script src="./data/skinData.js"></script>
+      <script src="./data/skinDataBySkin.js"></script>
+      <script src="./data/skinDataByCollection.js"></script>
+      <script src="./js/SkinUtils.js"></script>
+      <script src="./js/FloatFinder.js"></script>
+    </body>
+
+    <footer class="text-muted py-5">
+      <div class="container text-center">
+        <a href="https://discord.gg/JmYsqXPzZf" target="_blank" class="mx-2">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCLxDOE2vObQ9FRRoXXO5vdA" target="_blank" class="mx-2">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://twitter.com/ExactoFloat" target="_blank" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <p class="mb-0 py-3">Copyright © 2022 Stanley Dam. I am not affiliated with Valve Corp.</p>
+      </div>
+  </footer>
+
+</html>

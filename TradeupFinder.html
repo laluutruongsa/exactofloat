@@ -1,0 +1,82 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The tradeup finder page of exactofloat.com. A website that helps you find CS:GO skins that when combined in a trade-up contract will result in a skin with a specific float.">
+        <meta name="author" content="Stanley Dam">
+        <title>ExactoFloat - Tradeup finder</title>
+
+        <link href="./css/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/SkinTiers.css" rel="stylesheet">
+        <link rel="icon" href="./img/favicon.jpg">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9J0SKLM5Y2"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-9J0SKLM5Y2');
+        </script>
+    </head>
+
+    <header>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+              <a href="./index.html" class="navbar-brand d-flex align-items-center">
+                <img src="./img/ExactoKnifeIcon.png" width="50" height="50"></img>
+                <strong>Exacto Float</strong>
+              </a>
+
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link px-3 active" href="./TradeupFinder.html" style="font-weight: bold; font-size: large;">Trade up finder</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link px-3" href="./Contact.html" style="font-weight: bold; font-size: large; color: #ffffffe3;">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+    </header>
+
+    <body onload="OnbodyLoad()">
+      <div class="py-5 container d-flex justify-content-center">
+        <div class="form-group">
+          <label for="search">Search by name, collection or weapon type!</label>
+          <input type="text" class="form-control" id="searchInputfield" placeholder="Search..." aria-describedby="floatInputFieldInfo" style="width: 100%;" onchange="OnSearchChange()"></input>
+        </div>
+      </div>
+
+      <div class="py-5 text-center container">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="skinList">
+          </div>
+        </div>
+      </div>
+
+      <script src="./data/skinData.js"></script>
+      <script src="./data/skinDataBySearch.js"></script>
+      <script src="./js/SkinUtils.js"></script>
+      <script src="./js/TradeUpFinder.js"></script>
+    </body>
+
+    <footer class="text-muted py-5">
+      <div class="container text-center">
+        <a href="https://discord.gg/JmYsqXPzZf" target="_blank" class="mx-2">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCLxDOE2vObQ9FRRoXXO5vdA" target="_blank" class="mx-2">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://twitter.com/ExactoFloat" target="_blank" class="mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <p class="mb-0 py-3">Copyright © 2022 Stanley Dam. I am not affiliated with Valve Corp.</p>
+      </div>
+  </footer>
+
+</html>

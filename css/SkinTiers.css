@@ -1,0 +1,43 @@
+.bg-consumer {
+    --bs-bg-opacity:1;
+    background-color:#a6b5b6;
+}
+
+.bg-industrial {
+    --bs-bg-opacity:1;
+    background-color:#6081ac;
+}
+
+.bg-milspec {
+    --bs-bg-opacity:1;
+    background-color:#5261e7;
+}
+
+.bg-restricted {
+    --bs-bg-opacity:1;
+    background-color:#78168b;
+}
+
+.bg-classified {
+    --bs-bg-opacity:1;
+    background-color:#ce28e4;
+}
+
+.bg-covert {
+    --bs-bg-opacity:1;
+    background-color:#a52f2f;
+}
+
+.valid-range {
+    position: absolute;
+    height: 5px;
+    width: 0;
+    background-color: #62c462;
+}
+
+.invalid-range {
+    position: absolute;
+    height: 5px;
+    width: 0;
+    background-color: #ee5f5b;
+}
